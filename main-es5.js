@@ -292,7 +292,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ng-container *ngFor=\"let state of evidenceStates\">\n  <evidence-state\n    [state]=\"state\"\n    (evidenceChanged)=\"updateEvidence($event)\"\n  ></evidence-state>\n</ng-container>\n<h2>Mögliche Geister</h2>\n<ul>\n  <li *ngFor=\"let ghost of possibleGhosts\">{{ ghost.name }}</li>\n</ul>\n<p *ngIf=\"bestBets.length > 0\">Zu prüfen: {{ bestBets.join(', ') }}</p>\n<p *ngIf=\"possibleGhosts.length === 0\">Das macht keinen Sinn</p>\n<p *ngIf=\"possibleGhosts.length === 1\">Abfahrt!</p>\n";
+      __webpack_exports__["default"] = "<ng-container *ngFor=\"let state of evidenceStates\">\n  <evidence-state\n    [state]=\"state\"\n    (evidenceChanged)=\"updateEvidence($event)\"\n  ></evidence-state>\n</ng-container>\n<h2>Mögliche Geister</h2>\n<ul>\n  <li *ngFor=\"let ghost of possibleGhosts\"><b>{{ ghost.name }}</b> ({{ghost.evidences.join(', ')}})</li>\n</ul>\n<p *ngIf=\"bestBets.length > 0\">Zu prüfen: {{ bestBets.join(', ') }}</p>\n<p *ngIf=\"possibleGhosts.length === 0\">Das macht keinen Sinn</p>\n<p *ngIf=\"possibleGhosts.length === 1\">Abfahrt!</p>\n";
       /***/
     },
 
@@ -553,13 +553,16 @@
         evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FINGERPRINT]
       }, {
         name: "Phantom",
-        evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].EMF5, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FINGERPRINT]
+        evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].EMF5, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].ORB]
       }, {
         name: "Poltergeist",
         evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FINGERPRINT]
       }, {
         name: "Banshee",
         evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].EMF5, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FINGERPRINT]
+      }, {
+        name: "Dschinn",
+        evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].EMF5]
       }, {
         name: "Mare",
         evidences: [_evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_0__["Evidence"].FREEZE]
