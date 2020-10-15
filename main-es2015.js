@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2V2aWRlbmNlLXN0YXRlL2V2aWRlbmNlLXN0YXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("section {\n  padding: 10px 0;\n}\n\nh3 {\n  width: 100%;\n  text-align: center;\n  margin: 0;\n  padding-bottom: 5px;\n  font-size: 1.2rem;\n}\n\nbutton {\n  font-size: 1rem;\n  color: inherit;\n  background-color: #444;\n  border: none;\n  text-decoration: none;\n  outline: none;\n  padding: 10px;\n  flex-basis: 100%;\n}\n\nbutton.selected {\n  background-color: #666;\n}\n\n.button-bar {\n  display: flex;\n  align-items: stretch;\n  border-radius: 5px;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZpZGVuY2Utc3RhdGUvZXZpZGVuY2Utc3RhdGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFBO0FBQ0o7O0FBRUE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtBQUNKOztBQUVBO0VBQ0ksZUFBQTtFQUNBLGNBQUE7RUFDQSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxxQkFBQTtFQUNBLGFBQUE7RUFDQSxhQUFBO0VBQ0EsZ0JBQUE7QUFDSjs7QUFBSTtFQUNJLHNCQUFBO0FBRVI7O0FBQ0E7RUFDSSxhQUFBO0VBQ0Esb0JBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0FBRUoiLCJmaWxlIjoic3JjL2FwcC9ldmlkZW5jZS1zdGF0ZS9ldmlkZW5jZS1zdGF0ZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInNlY3Rpb24ge1xyXG4gICAgcGFkZGluZzogMTBweCAwO1xyXG59XHJcblxyXG5oMyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbjogMDtcclxuICAgIHBhZGRpbmctYm90dG9tOiA1cHg7XHJcbiAgICBmb250LXNpemU6IDEuMnJlbTtcclxufVxyXG5cclxuYnV0dG9uIHtcclxuICAgIGZvbnQtc2l6ZTogMXJlbTtcclxuICAgIGNvbG9yOiBpbmhlcml0O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzQ0NDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gICAgZmxleC1iYXNpczogMTAwJTtcclxuICAgICYuc2VsZWN0ZWQge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM2NjY7XHJcbiAgICB9XHJcbn1cclxuLmJ1dHRvbi1iYXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG4iXX0= */");
 
 /***/ }),
 
@@ -57,20 +57,7 @@ var Evidence;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"flex\">\r\n  <p>{{ state.evidence }}</p>\r\n  <select (change)=\"updateEvidence($event)\">\r\n    <option\r\n      *ngFor=\"let option of options\"\r\n      value=\"{{ option.value }}\"\r\n      [selected]=\"isSelected(option)\"\r\n    >\r\n      {{ option.name }}\r\n    </option>\r\n  </select>\r\n</section>\r\n");
-
-/***/ }),
-
-/***/ "A3xY":
-/*!***********************************!*\
-  !*** ./src/app/app.component.css ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("p {\n  font-family: Lato;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xuICBmb250LWZhbWlseTogTGF0bztcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"flex\">\r\n  <h3>{{ state.evidence }}</h3>\r\n  <div class=\"button-bar\">\r\n    <button *ngFor=\"let stateOption of proofStateOptions\"\r\n      [ngClass]=\"{'selected': isSelected(stateOption.key)}\"\r\n      (click)=\"updateEvidence(stateOption.key)\">\r\n      {{stateOption.name}}\r\n    </button>\r\n  </div>\r\n</section>\r\n");
 
 /***/ }),
 
@@ -86,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./app.component.html */ "VzVu");
-/* harmony import */ var _app_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.css */ "A3xY");
+/* harmony import */ var _app_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss */ "ynWL");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _game_data_evidence__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./game-data/evidence */ "3591");
 /* harmony import */ var _game_data_proof_state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./game-data/proof-state */ "dY+l");
@@ -157,7 +144,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'my-app',
         template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_app_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+        styles: [_app_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
     })
 ], AppComponent);
 
@@ -174,7 +161,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngFor=\"let state of evidenceStates\">\n  <evidence-state\n    [state]=\"state\"\n    (evidenceChanged)=\"updateEvidence($event)\"\n  ></evidence-state>\n</ng-container>\n<h2>Mögliche Geister</h2>\n<ul>\n  <li *ngFor=\"let ghost of possibleGhosts\"><b>{{ ghost.name }}</b> ({{ghost.evidences.join(', ')}})</li>\n</ul>\n<p *ngIf=\"bestBets.length > 0\">Zu prüfen: {{ bestBets.join(', ') }}</p>\n<p *ngIf=\"possibleGhosts.length === 0\">Das macht keinen Sinn</p>\n<p *ngIf=\"possibleGhosts.length === 1\">Abfahrt!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"root\">\n  <main>\n    <section class=\"max-width\">\n    <ng-container *ngFor=\"let state of evidenceStates\">\n      <evidence-state\n        [state]=\"state\"\n        (evidenceChanged)=\"updateEvidence($event)\"\n      ></evidence-state>\n    </ng-container>\n    <h2>Mögliche Geister</h2>\n    <ul>\n      <li *ngFor=\"let ghost of possibleGhosts\"><b>{{ ghost.name }} </b><small>({{ghost.evidences.join(', ')}}</small>)</li>\n    </ul>\n    <p *ngIf=\"bestBets.length > 0\">Zu prüfen: {{ bestBets.join(', ') }}</p>\n    <p *ngIf=\"possibleGhosts.length === 0\">Das macht keinen Sinn</p>\n    <p *ngIf=\"possibleGhosts.length === 1\">Abfahrt!</p>\n</section>\n  </main>\n\n</div>\n");
 
 /***/ }),
 
@@ -418,18 +405,17 @@ __webpack_require__.r(__webpack_exports__);
 let EvidenceStateComponent = class EvidenceStateComponent {
     constructor() {
         this.evidenceChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["EventEmitter"]();
-        this.options = [
-            { name: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"].NEVER, value: 'NEVER' },
-            { name: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"].DONT_KNOW, value: 'DONT_KNOW' },
-            { name: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"].PROOFED, value: 'PROOFED' },
-        ];
+        this.proofStateOptions = Object.keys(_game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"]).map(proofStateKey => ({
+            key: proofStateKey,
+            name: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"][proofStateKey],
+        }));
     }
-    updateEvidence(event) {
-        this.state = Object.assign(Object.assign({}, this.state), { state: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"][event.target.value] });
+    updateEvidence(proofStateKey) {
+        this.state = Object.assign(Object.assign({}, this.state), { state: _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"][proofStateKey] });
         this.evidenceChanged.emit(this.state);
     }
-    isSelected(option) {
-        return _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"][option.value] === this.state.state;
+    isSelected(proofStateKey) {
+        return _game_data_proof_state__WEBPACK_IMPORTED_MODULE_4__["ProofState"][proofStateKey] === this.state.state;
     }
 };
 EvidenceStateComponent.propDecorators = {
@@ -446,6 +432,19 @@ EvidenceStateComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 ], EvidenceStateComponent);
 
 
+
+/***/ }),
+
+/***/ "ynWL":
+/*!************************************!*\
+  !*** ./src/app/app.component.scss ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":root {\n  height: 100%;\n  width: 100%;\n}\n\n#root {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  display: grid;\n  grid-auto-rows: auto;\n}\n\nmain {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.max-width {\n  margin: 0 auto;\n  max-width: 500px;\n}\n\nh2 {\n  font-size: 1.2rem;\n}\n\np, li {\n  font-size: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7QUFDRjs7QUFDQTtFQUNFLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUVFLGFBQUE7RUFDRixvQkFBQTtBQUNGOztBQUNBO0VBRUUsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7QUFDRjs7QUFFQTtFQUNFLGNBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0UsaUJBQUE7QUFDRjs7QUFFQTtFQUNFLGVBQUE7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpyb290IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogMTAwJTtcbn1cbiNyb290IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG5cbiAgICBkaXNwbGF5OiBncmlkO1xuICBncmlkLWF1dG8tcm93czogYXV0bztcbn1cbm1haW4ge1xuXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5tYXgtd2lkdGgge1xuICBtYXJnaW46IDAgYXV0bztcbiAgbWF4LXdpZHRoOiA1MDBweDtcbn1cblxuaDIge1xuICBmb250LXNpemU6IDEuMnJlbTtcbn1cblxucCwgbGkge1xuICBmb250LXNpemU6IDFyZW07XG59XG4iXX0= */");
 
 /***/ }),
 
