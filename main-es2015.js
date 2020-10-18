@@ -788,7 +788,7 @@ const GHOSTS = [
     },
     {
         name: 'Demon',
-        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
         desc: `A Demon is one of the worst Ghosts you can encounter. It has been known to attack without a reason.`,
         strength: `Demons will attack more often than any other Ghost.`,
         weakness: `Asking a Demon successful questions on the Ouija Board won’t lower the users sanity.`,
@@ -917,12 +917,15 @@ let EvidenceSuggestionsComponent = class EvidenceSuggestionsComponent {
                     prove = [...prove, unknownEvidence];
                 }
                 else if (occurrenceCount > 1) {
-                    exclude = [...exclude, unknownEvidence];
+                    exclude = [...exclude, { evidence: unknownEvidence, count: occurrenceCount }];
                 }
             });
         }
+        console.log(exclude);
+        const sortedExcludeEvidences = exclude.sort((a, b) => b.count - a.count).map(temp => temp.evidence);
+        console.log(sortedExcludeEvidences);
         return {
-            evidenceKeysToExclude: exclude,
+            evidenceKeysToExclude: sortedExcludeEvidences,
             evidenceKeysToProve: prove,
         };
     }

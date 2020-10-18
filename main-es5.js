@@ -1440,7 +1440,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       weakness: "The Ghost will not enter hunting mode if there are multiply people nearby."
     }, {
       name: 'Demon',
-      neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
+      neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
       desc: "A Demon is one of the worst Ghosts you can encounter. It has been known to attack without a reason.",
       strength: "Demons will attack more often than any other Ghost.",
       weakness: "Asking a Demon successful questions on the Ouija Board won\u2019t lower the users sanity."
@@ -1640,13 +1640,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (occurrenceCount === 1) {
                 prove = [].concat(_toConsumableArray(prove), [unknownEvidence]);
               } else if (occurrenceCount > 1) {
-                exclude = [].concat(_toConsumableArray(exclude), [unknownEvidence]);
+                exclude = [].concat(_toConsumableArray(exclude), [{
+                  evidence: unknownEvidence,
+                  count: occurrenceCount
+                }]);
               }
             });
           }
 
+          console.log(exclude);
+          var sortedExcludeEvidences = exclude.sort(function (a, b) {
+            return b.count - a.count;
+          }).map(function (temp) {
+            return temp.evidence;
+          });
+          console.log(sortedExcludeEvidences);
           return {
-            evidenceKeysToExclude: exclude,
+            evidenceKeysToExclude: sortedExcludeEvidences,
             evidenceKeysToProve: prove
           };
         }
