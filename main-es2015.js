@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"viewport-scroll\">\r\n  <div class=\"content-wrapper\">\r\n    <main>\r\n      <app-evidence-selector\r\n        [evidenceStates]=\"evidenceStates\"\r\n        (evidenceStatesChanged)=\"evidenceStatesChanged($event)\"\r\n      ></app-evidence-selector>\r\n      <app-game-suggestions\r\n        [allGhosts]=\"allGhosts\"\r\n        [evidenceStates]=\"evidenceStates\"\r\n        (resetEvidenceStates)=\"onResetEvidenceStates()\"\r\n      ></app-game-suggestions>\r\n    </main>\r\n  </div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"viewport-scroll\">\r\n  <div class=\"content-wrapper\">\r\n    <main>\r\n      <app-evidence-selector\r\n        [evidences]=\"evidences\"\r\n        (evidenceStatesChanged)=\"evidenceStatesChanged($event)\"\r\n      ></app-evidence-selector>\r\n      <app-game-suggestions\r\n        [allGhosts]=\"allGhosts\"\r\n        [evidences]=\"evidences\"\r\n        (resetEvidenceStates)=\"onResetEvidenceStates()\"\r\n      ></app-game-suggestions>\r\n    </main>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>{{ this.name }}</p>\r\n<div>\r\n  <mat-button-toggle-group\r\n    *ngIf=\"evidenceStatus\"\r\n    (change)=\"onEvidenceStatusChanged($event)\"\r\n    name=\"fontStyle\"\r\n    aria-label=\"Font Style\"\r\n    [value]=\"initialEvidenceStatusKey\"\r\n  >\r\n    <mat-button-toggle\r\n      *ngFor=\"let option of evidenceSelectOptions\"\r\n      [value]=\"option.key\"\r\n      >{{ option.name }}</mat-button-toggle\r\n    >\r\n  </mat-button-toggle-group>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"flex-row\">\r\n  <p>{{ evidence.name }}</p>\r\n  <mat-icon icon>{{ evidence.icon }}</mat-icon>\r\n</div>\r\n<div>\r\n  <mat-button-toggle-group\r\n    *ngIf=\"evidence\"\r\n    (change)=\"onEvidenceChanged($event)\"\r\n    name=\"fontStyle\"\r\n    aria-label=\"Font Style\"\r\n    [value]=\"evidence.status\"\r\n  >\r\n    <mat-button-toggle\r\n      *ngFor=\"let option of evidenceSelectOptions\"\r\n      [value]=\"option\"\r\n      >{{ option }}</mat-button-toggle\r\n    >\r\n  </mat-button-toggle-group>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\r\n  <app-evidence-select\r\n    *ngFor=\"let evidenceStatus of evidenceStates\"\r\n    [evidenceStatus]=\"evidenceStatus\"\r\n    (evidenceStatusChanged)=\"onEvidenceStatesChanged($event)\"\r\n  ></app-evidence-select>\r\n</mat-card>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\r\n  <app-evidence-select\r\n    *ngFor=\"let evidence of evidences\"\r\n    [evidence]=\"evidence\"\r\n    (evidenceChanged)=\"onEvidenceChanged($event)\"\r\n  ></app-evidence-select>\r\n</mat-card>\r\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngIf=\"suggestedEvidences.evidenceKeysToProve.length > 0\">\r\n  <h3>try to prove</h3>\r\n  <ul>\r\n    <li *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToProve\">\r\n      {{ evidence }}\r\n    </li>\r\n  </ul>\r\n</ng-container>\r\n<ng-container *ngIf=\"suggestedEvidences.evidenceKeysToExclude.length > 0\">\r\n  <h3>try to exclude</h3>\r\n  <ul>\r\n    <li *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToExclude\">\r\n      {{ evidence }}\r\n    </li>\r\n  </ul>\r\n</ng-container>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card *ngIf=\"suggestedEvidences.evidenceKeysToProve.length > 0\">\r\n  <div>try to prove</div>\r\n  <mat-icon *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToProve\">{{\r\n    evidence.icon\r\n  }}</mat-icon>\r\n\r\n  <ng-container *ngIf=\"suggestedEvidences.evidenceKeysToExclude.length > 0\">\r\n    <div>try to exlude</div>\r\n    <mat-icon\r\n      *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToExclude\"\r\n      >{{ evidence.icon }}</mat-icon\r\n    >\r\n  </ng-container>\r\n</mat-card>\r\n");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\r\n  <ng-container *ngIf=\"suggestedGhosts.length === 0; else suggestions\">\r\n    <h2>no ghosts left</h2>\r\n    <button\r\n      mat-raised-button\r\n      color=\"accent\"\r\n      (click)=\"resetEvidenceStates.emit()\"\r\n    >\r\n      reset\r\n    </button>\r\n  </ng-container>\r\n</mat-card>\r\n\r\n<ng-template #suggestions>\r\n  <app-ghost-suggestions\r\n    [suggestedGhosts]=\"suggestedGhosts\"\r\n  ></app-ghost-suggestions>\r\n  <app-evidence-suggestions\r\n    [ghosts]=\"suggestedGhosts\"\r\n    [evidenceStates]=\"evidenceStates\"\r\n  ></app-evidence-suggestions>\r\n</ng-template>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngIf=\"suggestedGhosts.length === 0; else suggestions\">\r\n  <h2>no ghosts left</h2>\r\n  <button mat-raised-button color=\"accent\" (click)=\"resetEvidenceStates.emit()\">\r\n    reset\r\n  </button>\r\n</ng-container>\r\n\r\n<ng-template #suggestions>\r\n  <app-ghost-suggestions\r\n    [suggestedGhosts]=\"suggestedGhosts\"\r\n    [evidences]=\"evidences\"\r\n  ></app-ghost-suggestions>\r\n  <app-evidence-suggestions\r\n    [ghosts]=\"suggestedGhosts\"\r\n    [evidences]=\"evidences\"\r\n  ></app-evidence-suggestions>\r\n</ng-template>\r\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>possible ghosts</h2>\r\n<mat-accordion>\r\n  <mat-expansion-panel *ngFor=\"let ghost of suggestedGhosts\" hideToggle>\r\n    <mat-expansion-panel-header>\r\n      <mat-panel-title>\r\n        {{ ghost.name }}\r\n      </mat-panel-title>\r\n      <mat-panel-description>\r\n        <div *ngFor=\"let neededEvidence of ghost.neededEvidences\">\r\n          {{ neededEvidence }}\r\n        </div>\r\n      </mat-panel-description>\r\n    </mat-expansion-panel-header>\r\n    <mat-card-content>\r\n      <p>{{ ghost.desc }}</p>\r\n      <p><b>strength:</b> {{ ghost.strength }}</p>\r\n      <p><b>weakness:</b> {{ ghost.weakness }}</p>\r\n    </mat-card-content>\r\n  </mat-expansion-panel>\r\n</mat-accordion>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2>possible ghosts</h2>\r\n<mat-accordion>\r\n  <mat-expansion-panel *ngFor=\"let ghost of suggestedGhosts\" hideToggle>\r\n    <mat-expansion-panel-header>\r\n      <mat-panel-title>\r\n        {{ ghost.name }}\r\n      </mat-panel-title>\r\n      <mat-panel-description>\r\n        <div *ngFor=\"let neededEvidence of ghost.neededEvidences\">\r\n          <mat-icon>{{ getEvidenceIcon(neededEvidence) }}</mat-icon>\r\n        </div>\r\n      </mat-panel-description>\r\n    </mat-expansion-panel-header>\r\n    <mat-card-content>\r\n      <p>{{ ghost.desc }}</p>\r\n      <p><b>strength:</b> {{ ghost.strength }}</p>\r\n      <p><b>weakness:</b> {{ ghost.weakness }}</p>\r\n    </mat-card-content>\r\n  </mat-expansion-panel>\r\n</mat-accordion>\r\n");
 
 /***/ }),
 
@@ -410,25 +410,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _game_data_evidence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game-data/evidence */ "./src/app/game-data/evidence.ts");
-/* harmony import */ var _game_data_GHOSTS__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game-data/GHOSTS */ "./src/app/game-data/GHOSTS.ts");
+/* harmony import */ var _game_data_GHOSTS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game-data/GHOSTS */ "./src/app/game-data/GHOSTS.ts");
+/* harmony import */ var _game_data_EVIDENCES__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game-data/EVIDENCES */ "./src/app/game-data/EVIDENCES.ts");
+/* harmony import */ var _game_data_status__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./game-data/status */ "./src/app/game-data/status.ts");
+
 
 
 
 
 let AppComponent = class AppComponent {
     ngOnInit() {
-        this.evidenceStates = this.createEvidenceStates();
-        this.allGhosts = _game_data_GHOSTS__WEBPACK_IMPORTED_MODULE_3__["GHOSTS"];
+        this.evidences = this.createEvidenceStates();
+        this.allGhosts = _game_data_GHOSTS__WEBPACK_IMPORTED_MODULE_2__["GHOSTS"];
     }
-    evidenceStatesChanged(updatedEvidenceStats) {
-        this.evidenceStates = updatedEvidenceStats;
+    evidenceStatesChanged(updatedEvidences) {
+        this.evidences = updatedEvidences;
     }
     onResetEvidenceStates() {
-        this.evidenceStates = this.createEvidenceStates();
+        this.evidences = this.createEvidenceStates();
     }
     createEvidenceStates() {
-        return Object.keys(_game_data_evidence__WEBPACK_IMPORTED_MODULE_2__["Evidence"]).map((key) => ({ evidenceKey: key, statusKey: 'UNKNOWN' }));
+        return _game_data_EVIDENCES__WEBPACK_IMPORTED_MODULE_3__["EVIDENCES"].map(evidence => (Object.assign({}, evidence, { status: _game_data_status__WEBPACK_IMPORTED_MODULE_4__["Status"].UNKNOWN })));
     }
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -461,6 +463,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
 /* harmony import */ var _evidence_selector_evidence_selector_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./evidence-selector/evidence-selector.module */ "./src/app/evidence-selector/evidence-selector.module.ts");
 /* harmony import */ var _game_suggestions_game_suggestions_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./game-suggestions/game-suggestions.module */ "./src/app/game-suggestions/game-suggestions.module.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+
 
 
 
@@ -480,6 +484,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
             _evidence_selector_evidence_selector_module__WEBPACK_IMPORTED_MODULE_6__["EvidenceSelectorModule"],
             _game_suggestions_game_suggestions_module__WEBPACK_IMPORTED_MODULE_7__["GameSuggestionsModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
@@ -499,7 +504,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 10px;\n}\n@media (min-width: 365px) {\n  :host {\n    flex-direction: row;\n    justify-content: space-between;\n  }\n}\n:host:last-child {\n  padding-bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZpZGVuY2Utc2VsZWN0b3IvZXZpZGVuY2Utc2VsZWN0L0M6XFxVc2Vyc1xcc2hheFxccHJvamVjdHNcXHBoYXNtby9zcmNcXGFwcFxcZXZpZGVuY2Utc2VsZWN0b3JcXGV2aWRlbmNlLXNlbGVjdFxcZXZpZGVuY2Utc2VsZWN0LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9ldmlkZW5jZS1zZWxlY3Rvci9ldmlkZW5jZS1zZWxlY3QvZXZpZGVuY2Utc2VsZWN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFPQSxvQkFBQTtBQ0xGO0FEQUU7RUFMRjtJQU1JLG1CQUFBO0lBQ0EsOEJBQUE7RUNHRjtBQUNGO0FEQ0U7RUFDRSxpQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvZXZpZGVuY2Utc2VsZWN0b3IvZXZpZGVuY2Utc2VsZWN0L2V2aWRlbmNlLXNlbGVjdC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuXHJcbiAgQG1lZGlhIChtaW4td2lkdGg6IDM2NXB4KSB7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIH1cclxuXHJcbiAgcGFkZGluZy1ib3R0b206IDEwcHg7XHJcblxyXG4gICY6bGFzdC1jaGlsZCB7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMDtcclxuICB9XHJcbn1cclxuIiwiOmhvc3Qge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbn1cbkBtZWRpYSAobWluLXdpZHRoOiAzNjVweCkge1xuICA6aG9zdCB7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIH1cbn1cbjpob3N0Omxhc3QtY2hpbGQge1xuICBwYWRkaW5nLWJvdHRvbTogMDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-bottom: 10px;\n}\n@media (min-width: 500px) {\n  :host {\n    flex-direction: row;\n    justify-content: space-between;\n  }\n}\n:host:last-child {\n  padding-bottom: 0;\n}\n.flex-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-basis: 100%;\n  overflow: hidden;\n}\n@media (max-width: 500px) {\n  .flex-row {\n    margin: 5px 0;\n  }\n}\n.mat-icon {\n  margin: 0 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZpZGVuY2Utc2VsZWN0b3IvZXZpZGVuY2Utc2VsZWN0L0M6XFxVc2Vyc1xcc2hheFxccHJvamVjdHNcXHBoYXNtby9zcmNcXGFwcFxcZXZpZGVuY2Utc2VsZWN0b3JcXGV2aWRlbmNlLXNlbGVjdFxcZXZpZGVuY2Utc2VsZWN0LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9ldmlkZW5jZS1zZWxlY3Rvci9ldmlkZW5jZS1zZWxlY3QvZXZpZGVuY2Utc2VsZWN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFPQSxvQkFBQTtBQ0xGO0FEQUU7RUFMRjtJQU1JLG1CQUFBO0lBQ0EsOEJBQUE7RUNHRjtBQUNGO0FEQ0U7RUFDRSxpQkFBQTtBQ0NKO0FER0E7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSw4QkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUNBRjtBREVFO0VBUEY7SUFRSSxhQUFBO0VDQ0Y7QUFDRjtBREVBO0VBQ0UsYUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvZXZpZGVuY2Utc2VsZWN0b3IvZXZpZGVuY2Utc2VsZWN0L2V2aWRlbmNlLXNlbGVjdC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuXHJcbiAgQG1lZGlhIChtaW4td2lkdGg6IDUwMHB4KSB7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIH1cclxuXHJcbiAgcGFkZGluZy1ib3R0b206IDEwcHg7XHJcblxyXG4gICY6bGFzdC1jaGlsZCB7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMDtcclxuICB9XHJcbn1cclxuXHJcbi5mbGV4LXJvdyB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBmbGV4LWJhc2lzOiAxMDAlO1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcblxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA1MDBweCkge1xyXG4gICAgbWFyZ2luOiA1cHggMDtcclxuICB9XHJcbn1cclxuXHJcbi5tYXQtaWNvbiB7XHJcbiAgbWFyZ2luOiAwIDVweDtcclxufVxyXG4iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBhZGRpbmctYm90dG9tOiAxMHB4O1xufVxuQG1lZGlhIChtaW4td2lkdGg6IDUwMHB4KSB7XG4gIDpob3N0IHtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgfVxufVxuOmhvc3Q6bGFzdC1jaGlsZCB7XG4gIHBhZGRpbmctYm90dG9tOiAwO1xufVxuXG4uZmxleC1yb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGZsZXgtYmFzaXM6IDEwMCU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5AbWVkaWEgKG1heC13aWR0aDogNTAwcHgpIHtcbiAgLmZsZXgtcm93IHtcbiAgICBtYXJnaW46IDVweCAwO1xuICB9XG59XG5cbi5tYXQtaWNvbiB7XG4gIG1hcmdpbjogMCA1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -516,45 +521,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _game_data_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../game-data/status */ "./src/app/game-data/status.ts");
-/* harmony import */ var _game_data_evidence__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../game-data/evidence */ "./src/app/game-data/evidence.ts");
-
 
 
 
 let EvidenceSelectComponent = class EvidenceSelectComponent {
     constructor() {
-        /**
-         * The updated EvidenceStatus when statusKey changed
-         */
-        this.evidenceStatusChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.evidenceChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     ngOnInit() {
-        // set initial values to prevent to much rerender (mat toggle group will set it's value itself)
-        this.name = _game_data_evidence__WEBPACK_IMPORTED_MODULE_3__["Evidence"][this.evidenceStatus.evidenceKey];
+        this.initialStatusKey = _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"][this.evidence.status];
         this.evidenceSelectOptions = this.getEvidenceSelectOptions();
-        this.initialEvidenceStatusKey = this.evidenceStatus.statusKey;
     }
-    /**
-     * changes and emits state
-     * @param value Key of the selected status
-     */
-    onEvidenceStatusChanged({ value: selectedStatusKey, }) {
-        this.evidenceStatus.statusKey = selectedStatusKey;
-        this.evidenceStatusChanged.emit(this.evidenceStatus);
+    onEvidenceChanged({ value: newEvidenceStatus }) {
+        this.evidence.status = newEvidenceStatus;
+        this.evidenceChanged.emit(this.evidence);
     }
     getEvidenceSelectOptions() {
-        return Object.keys(_game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"]).map((key) => ({
-            key,
-            name: _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"][key],
-        }));
+        return Object.keys(_game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"]).map((key) => (_game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"][key]));
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-], EvidenceSelectComponent.prototype, "evidenceStatus", void 0);
+], EvidenceSelectComponent.prototype, "evidence", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
-], EvidenceSelectComponent.prototype, "evidenceStatusChanged", void 0);
+], EvidenceSelectComponent.prototype, "evidenceChanged", void 0);
 EvidenceSelectComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-evidence-select',
@@ -599,16 +590,16 @@ let EvidenceSelectorComponent = class EvidenceSelectorComponent {
     constructor() {
         this.evidenceStatesChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
-    onEvidenceStatesChanged(newEvidenceState) {
-        this.evidenceStates = this.evidenceStates.map((currentState) => currentState.evidenceKey === newEvidenceState.evidenceKey
+    onEvidenceChanged(newEvidenceState) {
+        this.evidences = this.evidences.map((currentState) => currentState.type === newEvidenceState.type
             ? newEvidenceState
             : currentState);
-        this.evidenceStatesChanged.emit(this.evidenceStates);
+        this.evidenceStatesChanged.emit(this.evidences);
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-], EvidenceSelectorComponent.prototype, "evidenceStates", void 0);
+], EvidenceSelectorComponent.prototype, "evidences", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
 ], EvidenceSelectorComponent.prototype, "evidenceStatesChanged", void 0);
@@ -652,11 +643,67 @@ let EvidenceSelectorModule = class EvidenceSelectorModule {
 EvidenceSelectorModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_evidence_selector_component__WEBPACK_IMPORTED_MODULE_3__["EvidenceSelectorComponent"], _evidence_select_evidence_select_component__WEBPACK_IMPORTED_MODULE_4__["EvidenceSelectComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonToggleModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonToggleModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"]],
         exports: [_evidence_selector_component__WEBPACK_IMPORTED_MODULE_3__["EvidenceSelectorComponent"]],
     })
 ], EvidenceSelectorModule);
 
+
+
+/***/ }),
+
+/***/ "./src/app/game-data/EVIDENCES.ts":
+/*!****************************************!*\
+  !*** ./src/app/game-data/EVIDENCES.ts ***!
+  \****************************************/
+/*! exports provided: EVIDENCES */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVIDENCES", function() { return EVIDENCES; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _evidence_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./evidence-enum */ "./src/app/game-data/evidence-enum.ts");
+
+
+const EVIDENCES = [
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF,
+        name: `EMF Level 5`,
+        desc: `Some Ghosts will leave EMF traces near them that will show up on an EMF Reader as level 5.`,
+        icon: 'wifi_tethering'
+    },
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX,
+        name: `Spirit Box`,
+        desc: `Only certain ghosts will talk through a Spirit Box when asked a question with you voice. Make sure the lights are off.`,
+        icon: 'speaker_phone'
+    },
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE,
+        name: `Freezing Temperatures`,
+        desc: `All ghosts make areas cold however some ghosts have been known to drop temperatures even further.`,
+        icon: 'ac_unit'
+    },
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT,
+        name: `Fingerprints`,
+        desc: `Some Ghosts have been known to leave fingerprints on doors, windows and light switches. This will show up with a UV Light.`,
+        icon: 'fingerprint'
+    },
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB,
+        name: `Ghost Orb`,
+        desc: `The classis paranormal evidence however not all ghosts have one. This will be visible on a camera.`,
+        icon: 'lens'
+    },
+    {
+        type: _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK,
+        name: `Ghost Writing Book`,
+        desc: `Some Ghosts are able to write inside this book if placed nearby. Paranormal investigators started using pen and paper as an alternative form of communication to the Spirit Box. It was later discovered that only certain types of Ghosts will write.`,
+        icon: 'book'
+    },
+];
 
 
 /***/ }),
@@ -672,90 +719,90 @@ EvidenceSelectorModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GHOSTS", function() { return GHOSTS; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _evidence__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./evidence */ "./src/app/game-data/evidence.ts");
+/* harmony import */ var _evidence_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./evidence-enum */ "./src/app/game-data/evidence-enum.ts");
 
 
 const GHOSTS = [
     {
         name: 'Spirit',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FINGERPRINT],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT],
         desc: `A spirit is the most common Ghost you will come across however it is still very powerful and dangerous. They are usually discovered at one of their hunting grounds after an unexplained death.`,
         strength: `Nothing`,
         weakness: `Using Smudge Sticks on a Spirit will stop it attacking for a long period of time.`,
     },
     {
         name: 'Wraith',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FINGERPRINT],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT],
         desc: `A wraith is one of the most dangerous Ghosts you will find. It is also the only known Ghost that has the ability of flight and has sometimes been known to travel through walls.`,
         strength: `Wraiths almost never touch the ground meaning it can’t be tracked by footsteps.`,
         weakness: `Wraiths have a toxic reaction to Salt.`,
     },
     {
         name: 'Phantom',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB],
         desc: `A Phantom is a Ghost that can possess the living, most commonly summoned by a Ouija Board. It also induces fear into those around it.`,
         strength: `Looking at a Phantom will considerably drop your sanity.`,
         weakness: `Taking a photo of the Phantom will make it temporarily disappear.`,
     },
     {
         name: 'Poltergeist',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FINGERPRINT],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT],
         desc: `One of the most famous Ghosts, a Poltergeist, also known as a noisy ghost can manipulate objects around it to spread fear into it’s victims.`,
         strength: `A Poltergeist can throw huge amounts of objects at once.`,
         weakness: `A Poltergeist is almost ineffective in an empty room.`,
     },
     {
         name: 'Banshee',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FINGERPRINT],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT],
         desc: `A Banshee is a natural hunter and will attack anything. It has been known to stalk it’s prey one at a time until making it’s kill.`,
         strength: `A Banshee will only target one person at a time.`,
         weakness: `Banshees feat the Crucifix and will be less aggressive when near one.`,
     },
     {
         name: 'Jinn',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF],
         desc: `A Jinn is a territorial Ghost that will attack when threatened. It has also been known to be able to travel at significant speed.`,
         strength: `A Jinn will travel at a faster speed if it’s victim is far away.`,
         weakness: `Turning off the locations power source will prevent the Jinn from using it’s ability.`,
     },
     {
         name: 'Mare',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
         desc: `A Mare is the source of all nightmares, making it most powerful in the dark.`,
         strength: `A Mare will have an increased chance to attack in the dark.`,
         weakness: `Turning the lights on around the Mare will lower it’s chance to attack.`,
     },
     {
         name: 'Revenant',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FINGERPRINT],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FINGERPRINT],
         desc: `A Revenant is a slow but violent Ghost that will attack indiscriminately. It has been rumored to travel at a significantly high speed when hunting.`,
         strength: `A Revenant will travel at a significantly faster speed when hunting a victim`,
         weakness: `Hiding from the Revenant will cause it to move very slowly.`,
     },
     {
         name: 'Shade',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK],
         desc: `A Shade is known to be a Shy Ghost. There is evidence that a Shade will stop all paranormal activity if there are multiple people nearby.`,
         strength: `Being shy means the ghost will be harder to find.`,
         weakness: `The Ghost will not enter hunting mode if there are multiply people nearby.`,
     },
     {
         name: 'Demon',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE],
         desc: `A Demon is one of the worst Ghosts you can encounter. It has been known to attack without a reason.`,
         strength: `Demons will attack more often than any other Ghost.`,
         weakness: `Asking a Demon successful questions on the Ouija Board won’t lower the users sanity.`,
     },
     {
         name: 'Yurei',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].FREEZE, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].ORB],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].FREEZE, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].ORB],
         desc: `A Yurei is a ghost that has returned to the physical world, usually for the purpose of revenge or hatred.`,
         strength: `Yurei’s have been known to have a stronger effect on people’s sanity.`,
         weakness: `Smudging the Yurei’s room will cause it to not wander around the location for a long time.`,
     },
     {
         name: 'Oni',
-        neededEvidences: [_evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].EMF, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOX, _evidence__WEBPACK_IMPORTED_MODULE_1__["Evidence"].BOOK],
+        neededEvidences: [_evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].EMF, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOX, _evidence_enum__WEBPACK_IMPORTED_MODULE_1__["EvidenceEnum"].BOOK],
         desc: `Oni’s are a cousin to the Demon and possess extreme strength. There have been rumors that they become more active around their prey.`,
         strength: `Oni’s are more active when people are nearby and have been seen moving objects at great speed.`,
         weakness: `Being more active will make the Oni easier to find and identify.`,
@@ -765,27 +812,27 @@ const GHOSTS = [
 
 /***/ }),
 
-/***/ "./src/app/game-data/evidence.ts":
-/*!***************************************!*\
-  !*** ./src/app/game-data/evidence.ts ***!
-  \***************************************/
-/*! exports provided: Evidence */
+/***/ "./src/app/game-data/evidence-enum.ts":
+/*!********************************************!*\
+  !*** ./src/app/game-data/evidence-enum.ts ***!
+  \********************************************/
+/*! exports provided: EvidenceEnum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Evidence", function() { return Evidence; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EvidenceEnum", function() { return EvidenceEnum; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-var Evidence;
-(function (Evidence) {
-    Evidence["FINGERPRINT"] = "Fingerprints";
-    Evidence["ORB"] = "Ghostorb";
-    Evidence["BOOK"] = "Ghostwriting";
-    Evidence["FREEZE"] = "Freezing temperatures";
-    Evidence["EMF"] = "EMF Level 5";
-    Evidence["BOX"] = "Ghostbox";
-})(Evidence || (Evidence = {}));
+var EvidenceEnum;
+(function (EvidenceEnum) {
+    EvidenceEnum[EvidenceEnum["FINGERPRINT"] = 0] = "FINGERPRINT";
+    EvidenceEnum[EvidenceEnum["ORB"] = 1] = "ORB";
+    EvidenceEnum[EvidenceEnum["BOOK"] = 2] = "BOOK";
+    EvidenceEnum[EvidenceEnum["FREEZE"] = 3] = "FREEZE";
+    EvidenceEnum[EvidenceEnum["EMF"] = 4] = "EMF";
+    EvidenceEnum[EvidenceEnum["BOX"] = 5] = "BOX";
+})(EvidenceEnum || (EvidenceEnum = {}));
 
 
 /***/ }),
@@ -805,7 +852,7 @@ __webpack_require__.r(__webpack_exports__);
 var Status;
 (function (Status) {
     Status["UNLIKELY"] = "unlikely";
-    Status["UNKNOWN"] = "unkown";
+    Status["UNKNOWN"] = "unknown";
     Status["PROVEN"] = "proven";
 })(Status || (Status = {}));
 
@@ -821,7 +868,7 @@ var Status;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dhbWUtc3VnZ2VzdGlvbnMvZXZpZGVuY2Utc3VnZ2VzdGlvbnMvZXZpZGVuY2Utc3VnZ2VzdGlvbnMuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-card {\n  margin-top: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS1zdWdnZXN0aW9ucy9ldmlkZW5jZS1zdWdnZXN0aW9ucy9DOlxcVXNlcnNcXHNoYXhcXHByb2plY3RzXFxwaGFzbW8vc3JjXFxhcHBcXGdhbWUtc3VnZ2VzdGlvbnNcXGV2aWRlbmNlLXN1Z2dlc3Rpb25zXFxldmlkZW5jZS1zdWdnZXN0aW9ucy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZ2FtZS1zdWdnZXN0aW9ucy9ldmlkZW5jZS1zdWdnZXN0aW9ucy9ldmlkZW5jZS1zdWdnZXN0aW9ucy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9nYW1lLXN1Z2dlc3Rpb25zL2V2aWRlbmNlLXN1Z2dlc3Rpb25zL2V2aWRlbmNlLXN1Z2dlc3Rpb25zLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hdC1jYXJkIHtcclxuICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcbiIsIi5tYXQtY2FyZCB7XG4gIG1hcmdpbi10b3A6IDE1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -838,8 +885,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _game_data_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../game-data/status */ "./src/app/game-data/status.ts");
-/* harmony import */ var _game_data_evidence__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../game-data/evidence */ "./src/app/game-data/evidence.ts");
-
 
 
 
@@ -857,22 +902,22 @@ let EvidenceSuggestionsComponent = class EvidenceSuggestionsComponent {
         }
     }
     getSuggestedEvidences() {
-        const unknownEvidences = this.evidenceStates.filter((evidence) => _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"][evidence.statusKey] === _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"].UNKNOWN);
+        const unknownEvidences = this.evidences.filter((evidence) => evidence.status === _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"].UNKNOWN);
         let prove = [];
         let exclude = [];
-        if (unknownEvidences.length !== this.evidenceStates.length) {
+        if (unknownEvidences.length !== this.evidences.length) {
             unknownEvidences.forEach((unknownEvidence) => {
                 let occurrenceCount = 0;
                 this.ghosts.forEach((suggestedGhost) => {
-                    if (suggestedGhost.neededEvidences.includes(_game_data_evidence__WEBPACK_IMPORTED_MODULE_3__["Evidence"][unknownEvidence.evidenceKey])) {
+                    if (suggestedGhost.neededEvidences.includes(unknownEvidence.type)) {
                         occurrenceCount++;
                     }
                 });
                 if (occurrenceCount === 1) {
-                    prove = [...prove, unknownEvidence.evidenceKey];
+                    prove = [...prove, unknownEvidence];
                 }
                 else if (occurrenceCount > 1) {
-                    exclude = [...exclude, unknownEvidence.evidenceKey];
+                    exclude = [...exclude, unknownEvidence];
                 }
             });
         }
@@ -884,7 +929,7 @@ let EvidenceSuggestionsComponent = class EvidenceSuggestionsComponent {
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-], EvidenceSuggestionsComponent.prototype, "evidenceStates", void 0);
+], EvidenceSuggestionsComponent.prototype, "evidences", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], EvidenceSuggestionsComponent.prototype, "ghosts", void 0);
@@ -925,37 +970,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameSuggestionsComponent", function() { return GameSuggestionsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _game_data_evidence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../game-data/evidence */ "./src/app/game-data/evidence.ts");
-/* harmony import */ var _game_data_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../game-data/status */ "./src/app/game-data/status.ts");
-
+/* harmony import */ var _game_data_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../game-data/status */ "./src/app/game-data/status.ts");
 
 
 
 let GameSuggestionsComponent = class GameSuggestionsComponent {
     constructor() {
         this.resetEvidenceStates = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.suggestedGhosts = [];
     }
-    ngOnChanges({ evidenceStates, ghosts }) {
-        if (evidenceStates || ghosts) {
+    ngOnChanges({ evidences, ghosts }) {
+        if (evidences || ghosts) {
             this.suggestedGhosts = this.getSuggestedGhosts();
         }
     }
     getSuggestedGhosts() {
-        const provenGhosts = this.getProvenGhosts(this.allGhosts, this.evidenceStates);
-        return this.getGhostsWithoutUnlikely(provenGhosts, this.evidenceStates);
+        if (this.suggestedGhosts && this.evidences) {
+            const provenGhosts = this.getProvenGhosts(this.allGhosts, this.evidences);
+            return this.getGhostsWithoutUnlikely(provenGhosts, this.evidences);
+        }
+        return [];
     }
-    getProvenGhosts(ghosts, evidenceStates) {
-        const provenEvidences = evidenceStates.filter((evidence) => _game_data_status__WEBPACK_IMPORTED_MODULE_3__["Status"][evidence.statusKey] === _game_data_status__WEBPACK_IMPORTED_MODULE_3__["Status"].PROVEN);
-        return ghosts.filter((ghost) => provenEvidences.every((provenEvidence) => ghost.neededEvidences.includes(_game_data_evidence__WEBPACK_IMPORTED_MODULE_2__["Evidence"][provenEvidence.evidenceKey])));
+    getProvenGhosts(ghosts, evidences) {
+        const provenEvidences = this.filterByStatus(evidences, _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"].PROVEN);
+        return ghosts.filter((ghost) => provenEvidences.every((provenEvidence) => ghost.neededEvidences.includes(provenEvidence.type)));
     }
-    getGhostsWithoutUnlikely(ghosts, evidenceStates) {
-        const unlikelyEvidences = evidenceStates.filter((evidence) => _game_data_status__WEBPACK_IMPORTED_MODULE_3__["Status"][evidence.statusKey] === _game_data_status__WEBPACK_IMPORTED_MODULE_3__["Status"].UNLIKELY);
-        return ghosts.filter((ghost) => !unlikelyEvidences.some((unlikelyEvidence) => ghost.neededEvidences.includes(_game_data_evidence__WEBPACK_IMPORTED_MODULE_2__["Evidence"][unlikelyEvidence.evidenceKey])));
+    getGhostsWithoutUnlikely(ghosts, evidences) {
+        const unlikelyEvidences = this.filterByStatus(evidences, _game_data_status__WEBPACK_IMPORTED_MODULE_2__["Status"].UNLIKELY);
+        return ghosts.filter((ghost) => !unlikelyEvidences.some((unlikelyEvidence) => ghost.neededEvidences.includes(unlikelyEvidence.type)));
+    }
+    filterByStatus(evidences, status) {
+        return evidences.filter((evidence) => evidence.status === status);
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-], GameSuggestionsComponent.prototype, "evidenceStates", void 0);
+], GameSuggestionsComponent.prototype, "evidences", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], GameSuggestionsComponent.prototype, "allGhosts", void 0);
@@ -1003,7 +1053,7 @@ let GameSuggestionsModule = class GameSuggestionsModule {
 GameSuggestionsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_game_suggestions_component__WEBPACK_IMPORTED_MODULE_3__["GameSuggestionsComponent"], _evidence_suggestions_evidence_suggestions_component__WEBPACK_IMPORTED_MODULE_4__["EvidenceSuggestionsComponent"], _ghost_suggestions_ghost_suggestions_component__WEBPACK_IMPORTED_MODULE_6__["GhostSuggestionsComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatExpansionModule"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatExpansionModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"]],
         exports: [_game_suggestions_component__WEBPACK_IMPORTED_MODULE_3__["GameSuggestionsComponent"]],
     })
 ], GameSuggestionsModule);
@@ -1043,10 +1093,20 @@ let GhostSuggestionsComponent = class GhostSuggestionsComponent {
     constructor() {
         this.suggestedGhosts = [];
     }
+    getEvidenceIcon(key) {
+        const evidences = this.evidences.filter(evidence => evidence.type === key);
+        if (evidences.length > 0) {
+            return evidences[0].icon;
+        }
+        return 'error';
+    }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], GhostSuggestionsComponent.prototype, "suggestedGhosts", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], GhostSuggestionsComponent.prototype, "evidences", void 0);
 GhostSuggestionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-ghost-suggestions',
