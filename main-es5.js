@@ -123,7 +123,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<mat-card *ngIf=\"suggestedEvidences.evidenceKeysToProve.length > 0\">\r\n  <div>try to prove</div>\r\n  <mat-icon *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToProve\">{{\r\n    evidence.icon\r\n  }}</mat-icon>\r\n\r\n  <ng-container *ngIf=\"suggestedEvidences.evidenceKeysToExclude.length > 0\">\r\n    <div>try to exlude</div>\r\n    <mat-icon\r\n      *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToExclude\"\r\n      >{{ evidence.icon }}</mat-icon\r\n    >\r\n  </ng-container>\r\n</mat-card>\r\n";
+    __webpack_exports__["default"] = "<mat-card\r\n  *ngIf=\"\r\n    suggestedEvidences.evidenceKeysToProve.length > 0 ||\r\n    suggestedEvidences.evidenceKeysToExclude.length > 0\r\n  \"\r\n>\r\n  <ng-container *ngIf=\"suggestedEvidences.evidenceKeysToProve.length > 0\">\r\n    <div>try to prove</div>\r\n    <mat-icon *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToProve\">{{\r\n      evidence.icon\r\n    }}</mat-icon>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"suggestedEvidences.evidenceKeysToExclude.length > 0\">\r\n    <div>try to exlude</div>\r\n    <mat-icon\r\n      *ngFor=\"let evidence of suggestedEvidences.evidenceKeysToExclude\"\r\n      >{{ evidence.icon }}</mat-icon\r\n    >\r\n  </ng-container>\r\n</mat-card>\r\n";
     /***/
   },
 
